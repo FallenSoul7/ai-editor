@@ -450,3 +450,42 @@
         font-size: 20px;
     }
 }
+/* ============================================
+   LANDING MODE MOBILE OVERRIDES
+   (appended — do not remove above rules)
+   ============================================ */
+
+@media (max-width: 768px) {
+  /* In landing mode, hide the mobile bottom tab bar
+     — navigation is via the drawer instead */
+  .landing-mode .mobile-tab-bar {
+    display: none !important;
+  }
+
+  /* Chat panel takes full height in landing mode */
+  .landing-mode .chat-panel {
+    position: fixed !important;
+    top: 0; left: 0; right: 0; bottom: 0;
+    width: 100vw !important;
+    height: 100dvh !important;
+    z-index: 1;
+    display: flex !important;
+    flex-direction: column;
+  }
+
+  /* Chat messages: fill remaining space */
+  .landing-mode .chat-messages {
+    flex: 1;
+    min-height: 0;
+  }
+
+  /* Hide existing chat header (model select row) — replaced by ls-topbar */
+  .landing-mode .chat-header {
+    display: none !important;
+  }
+
+  /* Conversations panel inside chat — hide, we use history strip */
+  .landing-mode .conversations-panel {
+    display: none !important;
+  }
+}
