@@ -891,7 +891,7 @@ async function init() {
 
     const editorReady = loadCodeMirror();
 
-    // Wait for all three, but each is independent
+        // Wait for all three, but each is independent
     await Promise.allSettled([gitReady, llmReady, editorReady]);
     
     // Initialize quick open and search panel (DOM is ready after buildAppLayout)
@@ -902,6 +902,10 @@ async function init() {
     initOfflineIndicator();
     initIndexIndicator();
     initMobile();
+
+    // Landing layer — mobile chat-first UI with drawer + model picker + history
+    const { initLanding } = await import('./landing.js');
+    initLanding();
 
     // Screen reader announcements for key state changes
     EventBus.on('file:opened', ({ path }) => {
